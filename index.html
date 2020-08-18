@@ -34,16 +34,16 @@
 		$(function(){
 			$('#dg').datagrid({
 				onCheck : function(index,row) {
-					setSelectedTitle(index,row);
+					calScore(index,row);
 				},
 				onUncheck : function(index,row) {
-					setSelectedTitle(index,row);
+					calScore(index,row);
 				},
 				onCheckAll : function(index,row) {
-					setSelectedTitle(index,row);
+					calScore(index,row);
 				},
 				onUncheckAll : function(index,row) {
-					setSelectedTitle(index,row);
+					calScore(index,row);
 				}				
 			});	
 			function setSelectedTitle (index,row) {
@@ -57,7 +57,27 @@
 					}				
 				});    					
 				$('#title').text(ed);
-			}				
+			}	
+			function calScore() {
+				var checkedItems = $('#dg').datagrid('getChecked');
+				var score_cal = 0;
+				$.each(checkedItems, function(index, item){
+					var num = Number(item.score);
+					score_cal += num;
+					
+					$.each(item.ref, function(ref_index, ref){
+						for(int i ; i < checkedItems.length ; ++i) {
+							if(i === index) continue;
+							
+							if(ref.name === checkedItems[i].name) {
+								var ref_num = Number(ref.score);
+								score_cal += ref_num;
+							}
+						}
+					}
+				});    	
+				$('#title').text(score_cal);
+			}
 		});
 	</script>	  
   </body>
