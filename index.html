@@ -65,14 +65,17 @@
 					var num = Number(item.score);
 					score_cal += num;
 					console.log("卡片: " + item.name + " 得分:" + num);
+					var picked_item = [index];
 					$.each(item.ref, function(ref_index, ref){
 						for(i = 0 ; i < checkedItems.length ; ++i) {
-							if(i === index) continue;
+							if(i === picked_item.indexOf(i) > -1) continue;
 							
 							if(ref.name === checkedItems[i].name) {
 								var ref_num = Number(ref.score);
 								score_cal += ref_num;
 								console.log("參考卡片: " + checkedItems[i].name + " 得分:" + ref_num);
+								picked_item.push(i);
+								break;
 							}
 						}
 					});
