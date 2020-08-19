@@ -14,7 +14,7 @@
           let _ref = _cardcombine['ref'][a]
           for(let x = 0 ; x < checkedItems.length ; ++x) {
             //console.log(i + "/" + x)
-            if (x === picked_item.indexOf(x) > -1) continue;
+            if (picked_item.indexOf(x) > -1) continue;
             
             if(_ref['name'] === checkedItems[x]) {
               //console.log('計分')
