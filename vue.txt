@@ -9,9 +9,9 @@
         let num = parseInt(allcardcombine[cardname]['score'])
         score_cal += num
         console.log(i+"/卡片: " + cardname + " 得分:" + num)
+        picked_item = [parseInt(i)]
         for(let a in _cardcombine['ref']){
           let _ref = _cardcombine['ref'][a]
-          picked_item = [parseInt(i)]
           for(let x = 0 ; x < checkedItems.length ; ++x) {
             //console.log(i + "/" + x)
             if (x === picked_item.indexOf(x) > -1) continue;
