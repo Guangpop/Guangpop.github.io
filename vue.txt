@@ -1,0 +1,31 @@
+    checkCombine(){
+      let checkedItems = this.select
+      let score_cal = 0
+      let allcardcombine = this.cardcombine
+      for(let i in checkedItems){
+        //console.log(checkedItems[i])
+        let cardname = checkedItems[i]
+        let _cardcombine = allcardcombine[cardname]
+        let num = parseInt(allcardcombine[cardname]['score'])
+        score_cal += num
+        console.log(i+"/卡片: " + cardname + " 得分:" + num)
+        for(let a in _cardcombine['ref']){
+          let _ref = _cardcombine['ref'][a]
+          for(let x = 0 ; x < checkedItems.length ; ++x) {
+            console.log(i + "/" + x)
+            if (x === parseInt(i)){
+              console.log('same')
+              break   
+            }else if(_ref['name'] === checkedItems[x]) {
+              console.log('計分')
+              let _ref_num = parseInt(_ref['score'])
+              score_cal += _ref_num
+              console.log(i+"/參考卡片: " + _ref['name'] + " 得分:" + _ref_num)
+            }
+          }
+        }
+      }
+    console.log(score_cal)
+    //this.score = score_cal
+    return score_cal
+    }
