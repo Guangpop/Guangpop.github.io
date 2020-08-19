@@ -11,16 +11,18 @@
         console.log(i+"/卡片: " + cardname + " 得分:" + num)
         for(let a in _cardcombine['ref']){
           let _ref = _cardcombine['ref'][a]
+          picked_item = [parseInt(i)]
           for(let x = 0 ; x < checkedItems.length ; ++x) {
-            console.log(i + "/" + x)
-            if (x === parseInt(i)){
-              console.log('same')
-              break   
-            }else if(_ref['name'] === checkedItems[x]) {
-              console.log('計分')
+            //console.log(i + "/" + x)
+            if (x === picked_item.indexOf(x) > -1) continue;
+            
+            if(_ref['name'] === checkedItems[x]) {
+              //console.log('計分')
               let _ref_num = parseInt(_ref['score'])
               score_cal += _ref_num
+              picked_item.push(x)
               console.log(i+"/參考卡片: " + _ref['name'] + " 得分:" + _ref_num)
+              break
             }
           }
         }
