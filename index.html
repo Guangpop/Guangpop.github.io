@@ -68,7 +68,7 @@
 					var picked_item = [index];
 					$.each(item.ref, function(ref_index, ref){
 						for(i = 0 ; i < checkedItems.length ; ++i) {
-							if(i === picked_item.indexOf(i) > -1) continue;
+							if(picked_item.indexOf(i) > -1) continue;
 							
 							if(ref.name === checkedItems[i].name) {
 								var ref_num = Number(ref.score);
